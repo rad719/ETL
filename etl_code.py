@@ -3,17 +3,20 @@ import pandas as pd
 import xml.etree.ElementTree as ET 
 from datetime import datetime 
   
-log_file = "log_file.txt" 
-target_file = "transformed_data.csv" 
+log_file = "log_file.txt" #all event will be stored in this file
+target_file = "transformed_data.csv" #file where transformed data is stored
   
+#CSV Extract Function  
 def extract_from_csv(file_to_process): 
     dataframe = pd.read_csv(file_to_process) 
     return dataframe 
-  
+
+#JSON Extract Function  
 def extract_from_json(file_to_process): 
     dataframe = pd.read_json(file_to_process, lines=True) 
     return dataframe 
-  
+
+#XML Extract Function  
 def extract_from_xml(file_to_process): 
     dataframe = pd.DataFrame(columns=["name", "height", "weight"]) 
     tree = ET.parse(file_to_process) 
